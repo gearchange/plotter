@@ -1,5 +1,8 @@
 #include <p30F4013.h>
 
+const int delay_time_long = 200;
+const int delay_time_short = 25;
+
 volatile int delay_counter = 0;
 
 static inline void delay_ms_routine(void){

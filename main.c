@@ -12,6 +12,42 @@ _FGS(CODE_PROT_OFF)
 #define buttonA	(PORTAbits.RA11)
 #define buttonB	(PORTCbits.RC15)
 
+const int x_max = 80;
+const int y_max = 36;
+const int dx = 3;
+const int dy = 3;
+
+void drow_grid(void){
+
+	for(int y = 0; y <= y_max; y += dy){
+		set_xy(0, y);
+		delay_ms(delay_time_long);
+		hand_down();
+		for(int x = 0; x <= x_max; x += dx){
+			set_xy(x, y);
+			delay_ms(delay_time_short);
+		}
+		delay_ms(delay_time_long);
+		hand_up();
+	}
+
+	for(int x = 0; x <= x_max; x += dx){
+		set_xy(x, 0);
+		delay_ms(delay_time_long);
+		hand_down();
+		for(int y = 0; y <= y_max; y += dy){
+			set_xy(x, y);
+			delay_ms(delay_time_short);
+		}
+		delay_ms(delay_time_long);
+		hand_up();
+	}
+
+	delay_ms(delay_time_long);
+	set_xy(0.0, 0.0);
+
+}
+
 void init_device(void){
 
 	LATA = 0;
@@ -41,8 +77,7 @@ void init_device(void){
 	OC2CON = 0b110;
 	OC3CON = 0b110;
 
-	hand_up();
-	set_xy(0.0, 0.0);
+	set_home_position();
 
 }
 
@@ -52,7 +87,7 @@ int main(void){
 
 	while(buttonA == buttonB);
 
-	drow_hougan();
+	drow_grid();
 
 	while(1);
 
