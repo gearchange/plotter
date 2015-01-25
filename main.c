@@ -7,6 +7,7 @@ _FGS(CODE_PROT_OFF)
 
 #include "plotter.h"
 #include "utility.h"
+#include "gearcode.h"
 
 #define buzzer	LATDbits.LATD9
 #define buttonA	(PORTAbits.RA11)
@@ -89,6 +90,8 @@ int main(void){
 
 	drow_grid();
 
+	char str[STRSIZE] = "POINT 				10 90";
+	do_command(str);
 	while(1);
 
 }
