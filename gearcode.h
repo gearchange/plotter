@@ -1,5 +1,5 @@
 #ifndef GEARCODE_H
-#define	GEARCODE_H
+#define GEARCODE_H
 
 #define STRSIZE (256)
 
