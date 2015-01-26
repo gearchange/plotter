@@ -18,7 +18,7 @@ const int y_max = 36;
 const int dx = 3;
 const int dy = 3;
 
-void drow_grid(void){
+void draw_grid(void){
 
 	for(int y = 0; y <= y_max; y += dy){
 		set_xy(0, y);
@@ -88,7 +88,7 @@ int main(void){
 
 	while(buttonA == buttonB);
 
-	drow_grid();
+	draw_grid();
 
 	char str[STRSIZE] = "POINT 				10 90";
 	do_command(str);
