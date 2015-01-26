@@ -8,6 +8,7 @@ int up(int argc, char argv[16][16]) {
 
 int down(int argc, char argv[16][16]) {
 	hand_down();
+	return 0;
 }
 
 int point(int argc, char argv[16][16]) {
