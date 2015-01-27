@@ -7,6 +7,7 @@ _FGS(CODE_PROT_OFF)
 
 #include "plotter.h"
 #include "utility.h"
+#include "gearcode.h"
 
 #define buzzer	LATDbits.LATD9
 #define buttonA	(PORTAbits.RA11)
@@ -17,7 +18,7 @@ const int y_max = 36;
 const int dx = 3;
 const int dy = 3;
 
-void drow_grid(void){
+void draw_grid(void){
 
 	for(int y = 0; y <= y_max; y += dy){
 		set_xy(0, y);
@@ -87,6 +88,7 @@ int main(void){
 
 	while(buttonA == buttonB);
 
+	draw_grid();
 
 	controlled_move(20, 30);
 	hand_down();
@@ -98,8 +100,9 @@ int main(void){
 	set_home_position();
 	while(buttonA == buttonB);
 
-	drow_grid();
 
+	char str[STRSIZE] = "POINT 				10 90";
+	do_command(str);
 	while(1);
 
 }
