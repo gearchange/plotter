@@ -90,6 +90,17 @@ int main(void){
 
 	draw_grid();
 
+	controlled_move(20, 30);
+	hand_down();
+	controlled_move(60, 30);
+	controlled_move(20, 0);
+	controlled_move(60, 0);
+	hand_up();
+
+	set_home_position();
+	while(buttonA == buttonB);
+
+
 	char str[STRSIZE] = "POINT 				10 90";
 	do_command(str);
 	while(1);
